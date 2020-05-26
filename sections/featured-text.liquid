@@ -1,0 +1,166 @@
+{% comment %}
+  Snippet can be used in section or block
+  eg. {% include 'include-featured-text' %}
+{% endcomment %}
+
+{% comment %}Assign object as block or section{% endcomment %}
+{% if type == 'block' %}
+  {% assign object = block %}
+{% else %}
+  {% assign object = section %}
+{% endif %}
+
+{% assign id = object.id %}
+{% comment %}Featured text settings {% endcomment %}
+{% assign image = object.settings.image %}
+{% assign title = object.settings.title %}
+{% assign sub_title = object.settings.sub_title %}
+{% assign subtitle = object.settings.subtitle %}
+{% assign svg = object.settings.svg %}
+{% assign content = object.settings.content %}
+{% assign text_size = object.settings.text_size %}
+{% assign text_alignment = object.settings.text_alignment %}
+{% assign button_label = object.settings.button_label %}
+{% assign button_link = object.settings.button_link %}
+
+<div class="container">
+  <div class="sixteen columns">
+    <div class="rich-text__content section {{ text_alignment }} clearfix">
+      {% if image %}
+        {% include 'image-element', image: image.src, alt: image.alt %}
+      {% endif %}
+
+
+      <div class="title_container">
+        <div class="border_container1">
+          <div class="border1"></div>
+        </div>
+        {% if title != blank %}
+        <div class="title_box">
+          <h2 class="rich-text__heading title ">
+            {{ title }}
+          </h2>
+          <h3 class="sub_title">{{ sub_title }}</h3>
+        {% endif %}
+          {% if svg != blank %}
+
+          <h2 class="rich-text__heading svg">
+            <img src="{{ svg }}" alt="">
+          </h2>
+        {% endif %}
+        </div>
+
+
+        <div class="border_container2">
+          <div class="border2"></div>
+        </div>
+      </div>
+
+        <div class="feature_divider"></div>
+
+      <h2 class="subheading">{{ subtitle }}</h2>
+
+      <div class="rich-text__text {{ text_size }}">
+        {% if content != blank %}
+          {{ content }}
+        {% endif %}
+
+        {% if button_label != blank %}
+          <a href="{{ button_link }}" class="action_button">
+            {{ button_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Rich text and image",
+    "class": "headline-section featured-content-section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Talk about your brand"
+      },
+        {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub Heading",
+        "default": "Nous les fabriquons"
+      },
+      {
+        "type": "html",
+        "id": "svg",
+        "label": "picto"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "content",
+        "label": "Text",
+        "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "label": "Text size",
+        "options": [
+          {
+            "value": "regular_text",
+            "label": "Regular"
+          },
+          {
+            "value": "featured_text",
+            "label": "Large"
+          }
+        ],
+        "default": "featured_text"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "align_left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "center"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich text and image",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}
