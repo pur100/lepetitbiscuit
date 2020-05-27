@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<img src="https://cdn.shopify.com/s/files/1/0275/8574/0913/files/image_12_55a05e5c-d6d8-4cee-a7ee-89933d2b4a21.png?v=1590274143" alt="" style="top:0;width:100%; position: absolute;z-index: -10;">
+<div class="container" style="">
+    <div class="tabs">
+     <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#desc">Description</a></li>
+      <li><a data-toggle="tab" href="#info_comp">Informations complémentaires</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="desc" class="tab-pane active">
+        <p class="tab_content">{{ section.settings.desc}}</p>
+      </div>
+      <div id="info_comp" class="tab-pane ">
+        <p class="tab_content">{{ section.settings.info_comp}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Tabs section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "title_enable",
+        "label": "Show title",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "desc",
+        "label": "Description"
+      },
+      {
+        "type": "textarea",
+        "id": "info_comp",
+        "label": "Informations complémentaires"
+      }
+    ]
+  }
+{% endschema %}

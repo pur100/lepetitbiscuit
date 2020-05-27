@@ -8,15 +8,23 @@
 
     <div class="grid">
       <div class="grid__item{% if block.settings.narrow_column %} medium-up--three-quarters medium-up--push-one-eighth{% endif %}">
-        {% if block.settings.title != blank %}
-          <div class="section-header">
-            <h2 class="section-header__title">
-              {{ block.settings.title }}
-            </h2>
+        <div class="form_container">
+
+
+         <div class="form_img">
+            <img src="https://cdn.shopify.com/s/files/1/0275/8574/0913/files/Rectangle_59_1.png?v=1590487865" alt="">
           </div>
-        {% endif %}
+
+
 
         <div class="form-vertical">
+          {% if block.settings.title != blank %}
+            <div class="section-header">
+              <h2 class="section-header__title">
+                {{ block.settings.title }}
+              </h2>
+            </div>
+          {% endif %}
           {% form 'contact' %}
 
             {% if form.posted_successfully? %}
@@ -28,12 +36,12 @@
             {{ form.errors | default_errors }}
 
             <div class="grid grid--small">
-              <div class="grid__item medium-up--one-half">
+              <div class="grid__item">
                 <label for="ContactFormName-{{ blockId }}">{{ 'contact.form.name' | t }}</label>
                 <input type="text" id="ContactFormName-{{ blockId }}" class="input-full" name="contact[name]" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
               </div>
 
-              <div class="grid__item medium-up--one-half">
+              <div class="grid__item">
                 <label for="ContactFormEmail-{{ blockId }}">{{ 'contact.form.email' | t }}</label>
                 <input type="email" id="ContactFormEmail-{{ blockId }}" class="input-full" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
               </div>
@@ -53,6 +61,7 @@
 
           {% endform %}
         </div>
+      </div>
       </div>
     </div>
   </div>

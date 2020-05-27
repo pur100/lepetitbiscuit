@@ -25,10 +25,11 @@
     </div>
   {% endcapture %}
 
-  <div class="feature-row" style="background-color: {{ section.settings.color_bg }}; margin: 0; " data-aos>
+  <div class="feature-row" style="background-color: {{section.settings.color_bg}}; margin: 0; " data-aos>
     {% if section.settings.layout == 'left' %}
       {{ image_layout }}
     {% endif %}
+    <img src="{{ section.settings.img_crumbs }}" style="position: absolute;right: 1%;bottom: 48%;"alt="">
     <div class="feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }}">
       {% if section.settings.subtitle != blank %}
         <p class="h5">{{ section.settings.subtitle }}</p>
@@ -72,7 +73,12 @@
       {
       "type": "color",
       "id": "color_bg",
-      "label": "Background"
+      "label": "Background image"
+      },
+      {
+      "type": "url",
+      "id": "img_crumbs",
+      "label": "Crumbs image"
       },
       {
         "type": "range",

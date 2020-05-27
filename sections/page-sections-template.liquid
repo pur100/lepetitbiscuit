@@ -1,7 +1,7 @@
 {% if section.settings.page_title_enable or section.settings.page_content_enable %}
   <div class="page-width page-content{% if section.blocks.size > 0 %} page-content--with-blocks{% endif %}">
     {%- include 'breadcrumbs' -%}
-
+    <h3>page sections template</h3>
     <div class="grid">
       <div class="grid__item medium-up--three-quarters medium-up--push-one-eighth">
 
@@ -364,6 +364,11 @@
             "unit": "px"
           },
           {
+          "type": "color",
+          "id": "color_bg",
+          "label": "Background"
+          },
+          {
             "type": "text",
             "id": "subtitle",
             "label": "Subtitle",
@@ -374,6 +379,12 @@
             "id": "title",
             "label": "Title",
             "default": "Image with text"
+          },
+          {
+            "type": "text",
+            "id": "other_title",
+            "label": "Heading part2",
+            "default": "entreprise ?"
           },
           {
             "type": "richtext",

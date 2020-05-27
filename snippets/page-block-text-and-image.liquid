@@ -1,4 +1,4 @@
-<div class="index-section">
+<div class="index-section" id="block--{{ block.id }}">
   <div class="page-width">
     {% capture image_layout %}
       <div class="feature-row__item">
@@ -24,7 +24,7 @@
       </div>
     {% endcapture %}
 
-    <div class="feature-row" data-aos>
+    <div class="feature-row" style="background-color: {{ block.settings.color_bg }}; margin: 0;" data-aos>
       {% if block.settings.layout == 'left' %}
         {{ image_layout }}
       {% endif %}
@@ -34,7 +34,12 @@
           <p class="h5">{{ block.settings.subtitle }}</p>
         {% endif %}
         {% if block.settings.title != blank %}
-          <p class="h3">{{ block.settings.title | escape }}</p>
+          <div class="title">
+            <p class="h3">{{ block.settings.title | escape }}</p>
+            {% if block.settings.other_title %}
+              <p class="h3">{{ block.settings.other_title | escape }}</p>
+            {% endif %}
+          </div>
         {% endif %}
         {% if block.settings.text != blank %}
           <div class="rte featured-row__subtext">{{ block.settings.text }}</div>
